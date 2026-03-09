@@ -1,7 +1,20 @@
 import 'package:flutter/material.dart';
+import 'cars_list_screen.dart';
+import 'package:provider/provider.dart';
+import 'car_provider.dart';
+import 'joke_provider.dart';
+import 'joke_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => CarProvider()..fetchCars()),
+        ChangeNotifierProvider(create: (_) => JokeProvider()..fetchNewJoke()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -10,32 +23,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Hello World',
+      title: 'P5d API Cars',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        primarySwatch: Colors.blue,
         useMaterial3: true,
       ),
-      home: const MyHomePage(),
+      home: JokeScreen(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Hello World'),
-      ),
-      body: const Center(
-        child: Text(
-          'Hello World!',
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
-    );
-  }
-}
