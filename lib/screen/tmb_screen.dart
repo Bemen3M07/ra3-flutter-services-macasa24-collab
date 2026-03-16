@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../provider/tmb_provider.dart';
 import 'line_detail_screen.dart'; // 👇 AÑADIDO
-import 'alerts_screen.dart'; // 👇 AÑADIDO
+import 'metro_screen.dart'; // 👇 AÑADIDO
 
 class TmbScreen extends StatelessWidget {
   TmbScreen({super.key});
@@ -19,7 +19,7 @@ class TmbScreen extends StatelessWidget {
         // 👇 AÑADIDO: Botón para ir a las alertas
         actions: [
           IconButton(
-            icon: const Icon(Icons.warning_amber_rounded),
+            icon: const Icon(Icons.train),
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const AlertsScreen()));
             },

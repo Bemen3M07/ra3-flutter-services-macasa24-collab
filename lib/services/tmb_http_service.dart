@@ -30,15 +30,15 @@ class TmbHttpService {
     }
   }
 
-  // 3. END-POINT: Alertas e Incidencias generales
-  Future<Map<String, dynamic>> fetchAlerts() async {
-    final url = Uri.parse('https://api.tmb.cat/v1/transit/alertes?app_id=$appId&app_key=$appKey');
+ // 3. END-POINT: Línies de Metro
+  Future<Map<String, dynamic>> fetchMetroLines() async {
+    final url = Uri.parse('https://api.tmb.cat/v1/transit/linies/metro?app_id=$appId&app_key=$appKey');
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
       return json.decode(utf8.decode(response.bodyBytes));
     } else {
-      throw Exception('Error al carregar les alertes. Codi: ${response.statusCode}');
+      throw Exception('Error al carregar les línies de metro. Codi: ${response.statusCode}');
     }
   }
 }

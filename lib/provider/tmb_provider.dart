@@ -62,17 +62,20 @@ class TmbProvider extends ChangeNotifier {
     }
   }
 
-  // 3. Buscar Alertas
-  Future<void> getAlerts() async {
+  // Variable para guardar el metro
+  List<dynamic> metroLines = [];
+
+  // 3. Buscar Línies de Metro
+  Future<void> getMetroLines() async {
     isLoading = true;
     notifyListeners();
     try {
-      final responseData = await _tmbService.fetchAlerts();
+      final responseData = await _tmbService.fetchMetroLines();
       if (responseData['features'] != null) {
-        alerts = responseData['features'];
+        metroLines = responseData['features'];
       }
     } catch (e) {
-      print(e);
+      print("Error cargando el metro: $e");
     } finally {
       isLoading = false;
       notifyListeners();
