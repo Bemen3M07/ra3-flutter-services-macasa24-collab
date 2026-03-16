@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'models/car_model.dart';
-import 'services/car_http_service.dart';
+import '../models/car_model.dart';
+import '../services/car_http_service.dart';
 
 class CarProvider extends ChangeNotifier {
   final CarHttpService _service = CarHttpService();
